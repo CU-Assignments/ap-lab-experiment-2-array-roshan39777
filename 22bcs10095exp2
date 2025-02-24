@@ -1,0 +1,60 @@
+// REMOVE DUPLICATE FROM SORTED ARRAY 
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if (nums.empty()) return 0; // Edge case for empty array
+
+    int j = 0; // Pointer for placing unique elements
+
+    for (int i = 1; i < nums.size(); i++) {
+        if (nums[i] != nums[j]) { // Found a new unique element
+            j++; // Move to next position
+            nums[j] = nums[i]; // Store the unique element
+        }
+    }
+
+    return j + 1; // Number of unique elements
+}
+};
+
+// Insertion sort 
+
+int n = arr.size();
+    for (int i = 1; i < n; i++) {
+        int key = arr[i]; // Current element to be inserted
+        int j = i - 1;
+
+        // Shift elements of arr[0..i-1] that are greater than key
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j]; // Move element one position ahead
+            j--;
+        }
+
+        arr[j + 1] = key; // Insert key at the correct position
+    }
+
+
+
+    // 2 Sum
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        
+    unordered_map<int, int> numMap; // Stores num -> index
+
+    for (int i = 0; i < nums.size(); i++) {
+        int complement = target - nums[i]; // The number we need to find
+
+        // Check if the complement exists in the map
+        if (numMap.find(complement) != numMap.end()) {
+            return {numMap[complement], i}; // Return indices of the two numbers
+        }
+
+        // Store the current number and its index in the map
+        numMap[nums[i]] = i;
+    }
+
+    return {}; // This line is never reached because a solution always exists
+    }
+};
